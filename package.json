@@ -1,0 +1,23 @@
+{
+  "name": "crowdin-config",
+  "version": "1.0.0",
+  "description": "Config for Crowdin translation projects on https://translate.freecodecamp.org",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freeCodeCamp/crowdin-config.git"
+  },
+  "author": "",
+  "license": "BSD 3-Clause License",
+  "bugs": {
+    "url": "https://github.com/freeCodeCamp/crowdin-config/issues"
+  },
+  "homepage": "https://github.com/freeCodeCamp/crowdin-config#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
