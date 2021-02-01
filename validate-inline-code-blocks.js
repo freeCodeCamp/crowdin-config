@@ -8,9 +8,33 @@ function createCodeArr(arr) {
   return codeArr;
 };
 
-var sortLogic = function (a, b) {
-  return a.localeCompare(b, 'en');
-};
+function countElements(arr) {
+  var obj = {};
+  for (var i = 0; i < arr.length; i++) {
+    var elem = arr[i];
+    if (obj[elem]) {
+      obj[elem]++;
+    } else {
+      obj[elem] = 1;
+    }
+  }
+  return obj;
+}
+
+function doCountsMatch (s, t) {
+  var sourceKeys = Object.keys(s);
+  var translationKeys = Object.keys(t);
+  if (sourceKeys.length !== translationKeys.length) {
+    return false;
+  }
+  for (var i = 0; i < sourceKeys.length; i++) {
+    var key = sourceKeys[i];
+    if (s[key] !== t[key]) {
+      return false;
+    }
+  }
+  return true;
+}
 
 var matchAll = function(str){
   var regex1 = /(\<(code|\d+)>)([^<]*?)(\<\/\2>)/gi;
@@ -27,7 +51,7 @@ var matchAll = function(str){
 
 var result = { success: false };
 
-var source = crowdin.source;
+var source =  crowdin.source;
 var translation = crowdin.translation;
 
 var sourceMatch = matchAll(source);
@@ -40,9 +64,10 @@ if (sourceCodeArr.length) {
     result.message = 'The source has ' + sourceCodeArr.length + ' inline code blocks and the translation has none.';
     result.fixes = [];
   } else if (sourceCodeArr.length === translationCodeArr.length) {
-    var sortedSourceCodeArr = sourceCodeArr.sort(sortLogic);
-    var sortedTranslationCodeArr = translationCodeArr.sort(sortLogic);
-    if (sortedSourceCodeArr.join('') !== sortedTranslationCodeArr.join('')) {
+    var sourceCountObj = countElements(sourceCodeArr);
+    var translationCountObj = countElements(translationCodeArr);
+
+    if (!doCountsMatch(sourceCountObj, translationCountObj)) {
       result.message = 'Inline code blocks should not be changed. You appear to have changed at least one code block.';
       result.fixes = [];
     } else {
