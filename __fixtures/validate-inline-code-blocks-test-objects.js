@@ -82,8 +82,7 @@ const tests = [
     result: {
       success: true
     }
-  }
-,  
+  } 
 ];
 
 module.exports = tests;
