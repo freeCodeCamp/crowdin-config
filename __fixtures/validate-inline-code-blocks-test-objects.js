@@ -82,7 +82,28 @@ const tests = [
     result: {
       success: true
     }
-  } 
+  },
+  {
+    name: 'should pass when source and translation when code blocks have hasOwnProperty as a code block string ',
+    crowdin: {
+      source: `The first <code>hasOwnProperty</code> returns <code>true</code>, while the second returns <code>false</code>.`,
+      translation: `El primer <code>hasOwnProperty</code> devuelve <code>true</code>, mientras que el segundo devuelve <code>false</code>.`
+    },
+    result: {
+      success: true,
+    }
+  },
+  {
+    name: 'should fail when source contains hasOwnProperty as a code block string the translation does not ',
+    crowdin: {
+      source: `The first <code>hasOwnProperty</code> returns <code>true</code>, while the second returns <code>false</code>.`,
+      translation: `El primer <code>hasProperty</code> devuelve <code>true</code>, mientras que el segundo devuelve <code>false</code>.`
+    },
+    result: {
+      success: false,
+      message: 'Inline code blocks should not be changed. You appear to have changed at least one code block.'
+    }
+  }  
 ];
 
 module.exports = tests;

@@ -10,9 +10,10 @@ function createCodeArr(arr) {
 
 function countElements(arr) {
   var obj = {};
+  obj.__tempHasOwnProperty = Object.hasOwnProperty;
   for (var i = 0; i < arr.length; i++) {
     var elem = arr[i];
-    if (obj[elem]) {
+    if (obj.__tempHasOwnProperty(elem)) {
       obj[elem]++;
     } else {
       obj[elem] = 1;
