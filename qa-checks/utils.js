@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const iterateThroughTests = (qaCheck, tests) => {
   for (let test of tests) {
@@ -12,7 +13,7 @@ const iterateThroughTests = (qaCheck, tests) => {
 
 const createQaCheckFunction = codeFilePath => {
   const functionBody = fs.readFileSync(
-    codeFilePath,
+    path.join(__dirname + codeFilePath),
     { encoding: 'utf8', flag: 'r' }
   );
 
