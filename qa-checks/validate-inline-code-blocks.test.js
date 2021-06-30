@@ -4,7 +4,7 @@ const {
 }= require('./utils');
 
 const tests = require('./__fixtures/validate-inline-code-blocks-test-objects');
-const qaCheck = createQaCheckFunction('./validate-inline-code-blocks.js');
+const qaCheck = createQaCheckFunction('/validate-inline-code-blocks.js');
 
 describe('validate-inline-code-blocks', () => {
   it('qaCheck is a function', () => {

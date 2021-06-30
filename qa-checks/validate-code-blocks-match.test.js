@@ -3,10 +3,10 @@ const {
   createQaCheckFunction
 }= require('./utils');
 
-const tests = require('./__fixtures/validate-message-boxes-test-objects');
-const qaCheck = createQaCheckFunction('./validate-message-boxes.js');
+const tests = require('./__fixtures/validate-code-blocks-match-test-objects');
+const qaCheck = createQaCheckFunction('/validate-code-blocks-match.js');
 
-describe('validate-message-boxes', () => {
+describe('validate-code-blocks-match', () => {
   it('qaCheck is a function', () => {
     expect(typeof qaCheck).toBe(
       'function'
