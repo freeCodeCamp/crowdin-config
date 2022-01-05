@@ -18,6 +18,6 @@
   "homepage": "https://github.com/freeCodeCamp/crowdin-config#readme",
   "dependencies": {},
   "devDependencies": {
-    "jest": "27.4.6"
+    "jest": "27.4.7"
   }
 }
