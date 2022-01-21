@@ -32,3 +32,5 @@ const tests = [
     },
   },
 ];
+
+module.exports = tests;
