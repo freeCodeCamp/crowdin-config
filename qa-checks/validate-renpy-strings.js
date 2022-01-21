@@ -1,3 +1,7 @@
+function startsWith(str, search) {
+  return str.substring(0, search.length) === search;
+}
+
 var result = { success: true };
 
 var labelNames = [
@@ -25,15 +29,12 @@ var labelNames = [
   "npc",
 ];
 
-var source = crowdin.source.trim();
-var translation = crowdin.translation.trim();
+var source = crowdin.source;
+var translation = crowdin.translation;
 
-if (labelNames.every((label) => !source.startsWith(label))) {
-  return result;
-}
-
-for (var label of labelNames) {
-  if (source.startsWith(label) && !translation.startsWith(label)) {
+for (var i = 0; i < labelNames.length; i++) {
+  var label = labelNames[i];
+  if (startsWith(source, label) && !startsWith(translation, label)) {
     result.success = false;
     result.message =
       "The Ren'Py keyword " + label + " should not be translated.";
